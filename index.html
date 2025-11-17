@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Стив Джобс — Главная</title>
+<style>
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background: #0e0e0e;
+    color: #fff;
+    overflow-x: hidden;
+    cursor: none;
+    transition: 0.4s;
+}
+.cursor {
+    width: 22px;
+    height: 22px;
+    background: rgba(0,200,255,0.9);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    transition: .2s;
+    z-index: 9999;
+    box-shadow: 0 0 20px #00eaff;
+}
+.cursor.big { width: 40px; height: 40px; background: rgba(0,255,200,0.9); }
+
+body.light { background: #f3f3f3; color: #111; }
+
+.parallax {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: url("https://i.imgur.com/1ZQZ1ZP.jpeg") no-repeat center/cover;
+    background-attachment: fixed;
+    opacity: 0.15;
+    z-index: -1;
+    filter: blur(2px);
+}
+
+nav {
+    text-align: center;
+    padding: 20px 0;
+}
+nav a {
+    color: #fff;
+    margin: 0 18px;
+    font-size: 1.2rem;
+    text-decoration: none;
+    transition: .3s;
+}
+nav a:hover { color: #4da3ff; }
+body.light nav a { color: #111; }
+body.light nav a:hover { color: #0066ff; }
+
+header {
+    text-align: center;
+    padding: 120px 20px 60px;
+}
+header h1 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    animation: fadeIn 1s ease;
+}
+header p {
+    font-size: 1.3rem;
+    line-height: 1.6;
+    max-width: 700px;
+    margin: 0 auto 40px;
+    animation: fadeIn 1.5s ease;
+}
+
+.btn-container {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+.button {
+    padding: 14px 28px;
+    font-size: 1.1rem;
+    border: 2px solid #4da3ff;
+    border-radius: 12px;
+    background: transparent;
+    color: #fff;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px rgba(77,163,255,0.4);
+}
+.button:hover {
+    background: #4da3ff;
+    color: #fff;
+    transform: scale(1.08);
+    box-shadow: 0 0 25px rgba(77,163,255,0.7);
+}
+body.light .button {
+    color: #111;
+    border-color: #0066ff;
+    box-shadow: 0 0 15px rgba(0,102,255,0.4);
+}
+body.light .button:hover {
+    background: #0066ff;
+    color: #fff;
+    box-shadow: 0 0 25px rgba(0,102,255,0.7);
+}
+
+.themeToggle {
+    position: fixed;
+    top: 20px; right: 20px;
+    padding: 10px 15px;
+    background: #222;
+    color: white;
+    border-radius: 12px;
+    cursor: pointer;
+}
+body.light .themeToggle { background: #fff; color: #000; }
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="parallax"></div>
+<div class="themeToggle" onclick="toggleTheme()">🌙</div>
+
+<nav>
+<a href="index.html">Главная</a>
+<a href="bio.html">Биография</a>
+<a href="innovations.html">Инновации</a>
+<a href="quotes.html">Цитаты</a>
+</nav>
+
+<header>
+<h1>Стив Джобс</h1>
+<p>Пионер цифровой эпохи, сооснователь Apple и вдохновитель миллионов людей по всему миру. 
+Его идеи изменили компьютеры, музыку, смартфоны и современные технологии.</p>
+
+<div class="btn-container">
+    <a href="bio.html" class="button">Биография</a>
+    <a href="innovations.html" class="button">Инновации</a>
+    <a href="quotes.html" class="button">Цитаты</a>
+</div>
+</header>
+
+<script>
+function toggleTheme() { document.body.classList.toggle("light"); }
+
+const cursor = document.getElementById("cursor");
+document.addEventListener("mousemove", e => {
+    cursor.style.left = e.clientX + "px";
+    cursor.style.top = e.clientY + "px";
+});
+document.querySelectorAll("a, button").forEach(el => {
+    el.addEventListener("mouseenter", () => cursor.classList.add("big"));
+    el.addEventListener("mouseleave", () => cursor.classList.remove("big"));
+});
+</script>
+
+</body>
+</html>

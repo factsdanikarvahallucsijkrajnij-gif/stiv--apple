@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Инновации Стива Джобса</title>
+<style>
+body {
+    margin:0;
+    font-family:'Inter', sans-serif;
+    background:#0e0e0e;
+    color:#fff;
+    overflow-x:hidden;
+    cursor:none;
+    transition:0.4s;
+}
+.cursor {
+    width:22px;height:22px;
+    background:rgba(0,200,255,0.9);
+    border-radius:50%;
+    position:fixed;pointer-events:none;
+    transform:translate(-50%,-50%);
+    transition:.2s;z-index:9999;
+    box-shadow:0 0 20px #00eaff;
+}
+.cursor.big{width:40px;height:40px;background:rgba(0,255,200,0.9);}
+body.light{background:#f3f3f3;color:#111;}
+.parallax{
+    position:fixed;top:0;left:0;width:100%;height:100%;
+    background:url("https://i.imgur.com/1ZQZ1ZP.jpeg") no-repeat center/cover;
+    background-attachment:fixed;
+    opacity:0.15; z-index:-1; filter:blur(2px);
+}
+nav{text-align:center;padding:20px 0;}
+nav a{color:#fff;margin:0 18px;font-size:1.2rem;text-decoration:none;transition:.3s;}
+nav a:hover{color:#4da3ff;}
+body.light nav a{color:#111;} body.light nav a:hover{color:#0066ff;}
+header{text-align:center;padding:80px 20px 20px;}
+header h1{font-size:3rem;animation:fadeIn 1s ease;}
+.container{max-width:900px;margin:20px auto 50px;padding:20px;}
+.card{
+    background:rgba(30,30,30,0.78);
+    border-radius:22px;padding:25px 30px;
+    margin-bottom:30px;backdrop-filter:blur(6px);
+    border:1px solid rgba(255,255,255,0.08);
+    animation:slideUp 0.7s ease;
+}
+.card h2{font-size:1.8rem;margin-bottom:12px;border-left:5px solid #4da3ff;padding-left:12px;}
+.card p{line-height:1.6;font-size:1.1rem;}
+.themeToggle{
+    position:fixed;top:20px;right:20px;padding:10px 15px;
+    background:#222;color:#fff;border-radius:12px;cursor:pointer;
+}
+body.light .themeToggle{background:#fff;color:#000;}
+@keyframes slideUp{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+</style>
+</head>
+<body>
+<div class="cursor" id="cursor"></div>
+<div class="parallax"></div>
+<div class="themeToggle" onclick="toggleTheme()">🌙</div>
+<nav>
+<a href="index.html">Главная</a>
+<a href="bio.html">Биография</a>
+<a href="innovations.html">Инновации</a>
+<a href="quotes.html">Цитаты</a>
+</nav>
+<header>
+<h1>Инновации Стива Джобса</h1>
+</header>
+<div class="container">
+
+<div class="card">
+<h2>Apple I и Apple II</h2>
+<p>Первая революция Джобса — персональные компьютеры. Apple I и II стали массовыми, доступными, простыми в использовании.</p>
+</div>
+
+<div class="card">
+<h2>Macintosh</h2>
+<p>Macintosh изменил подход к интерфейсу: графический интерфейс и мышь сделали компьютер удобным для всех.</p>
+</div>
+
+<div class="card">
+<h2>iPod и iTunes</h2>
+<p>Медиа-технологии: iPod и iTunes изменили индустрию музыки, сделав её цифровой и доступной.</p>
+</div>
+
+<div class="card">
+<h2>iPhone</h2>
+<p>Смартфон, который объединил телефон, интернет и музыку в одном устройстве, изменив рынок навсегда.</p>
+</div>
+
+<div class="card">
+<h2>iPad и App Store</h2>
+<p>iPad создал новую категорию устройств, а App Store открыл путь миллионам разработчиков к глобальной аудитории.</p>
+</div>
+
+</div>
+
+<script>
+function toggleTheme(){document.body.classList.toggle("light");}
+const cursor=document.getElementById("cursor");
+document.addEventListener("mousemove",e=>{cursor.style.left=e.clientX+"px";cursor.style.top=e.clientY+"px";});
+document.querySelectorAll("a, button").forEach(el=>{el.addEventListener("mouseenter",()=>cursor.classList.add("big"));el.addEventListener("mouseleave",()=>cursor.classList.remove("big"));});
+</script>
+</body>
+</html>
